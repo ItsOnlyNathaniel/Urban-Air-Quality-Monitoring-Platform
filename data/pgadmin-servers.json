@@ -1,0 +1,14 @@
+{
+  "Servers": { 
+    "1": {
+      "Name": "Air Quality PostgreSQL",
+      "Group": "Development",
+      "Host": "db",
+      "Port": 5432,
+      "MaintenanceDB": "air_quality_db",
+      "Username": "air_quality_user",
+      "SSLMode": "prefer",
+      "Comment": "Air Quality Platform Database with PostGIS"
+    }
+  }
+}
