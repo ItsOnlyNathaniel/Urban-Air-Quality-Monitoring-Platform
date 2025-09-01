@@ -61,9 +61,28 @@ services:
     depends_on:
       - backend
 
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: air_quality_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@airquality.local}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-pgadmin_password}
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./data/pgadmin-servers.json:/pgadmin4/servers.json:ro
+    depends_on:
+      - db
+    networks:
+      - air_quality_network
+    restart: unless-stopped
+
 volumes:
   postgres_data:
+  pgadmin_data: 
 
 networks:
   air_quality_network:
     driver: bridge
+
